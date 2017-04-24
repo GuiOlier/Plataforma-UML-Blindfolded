@@ -1,5 +1,5 @@
-== Plataforma UML Blindfolded
-= Projeto de Pesquisa Voluntário
+= Plataforma UML Blindfolded
+== Projeto de Pesquisa Voluntário
 
 <b>Resumo:</b>
 
