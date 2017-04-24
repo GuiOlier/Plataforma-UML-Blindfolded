@@ -1,28 +1,41 @@
-== README
+== Plataforma UML Blindfolded
+= Projeto de Pesquisa Voluntário
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<b>Resumo:</b>
 
-Things you may want to cover:
+Dentro do contexto acadêmico e na vida profissional nas áreas correlatas a tecnologia de informação, a
+Linguagem de Modelagem Unificada (UML) desempenha um papel fundamental no desenvolvimento de um
+software de qualidade. A UML é um conjunto de notações gráficas utilizada para modelar sistemas sendo
+considerada parte central das atividades envolvidas na construção, documentação e implementação de
+softwares, por meio de especificação, visualização, modificação, construção e documentação de artefatos
+de projetos de software orientados a objetos. É composta por treze diagramas subdivididos em estruturais,
+implementação, comportamentais e interação. O presente projeto de pesquisa visa o desenvolvimento do
+módulo de aplicação de auxílio educacional ao cego na construção de diagrama de máquina de estado
+da plataforma UML blindfolded de auxílio educacional ao cego no gerenciamento de diagramas UML. UML
+blindfolded possibilita ao estudante cego gerenciar e manipular seus diagramas no ambiente web por meio
+de tecnologias online, assistivas, acessíveis e de qualidade, além de hospedar os módulos de aplicações
+geradas para cada um dos diagramas da UML a serem desenvolvidos em outros projetos de pesquisas
+futuros, possibilitando a inclusão de pessoas portadoras dessa deficiência no curso superior nas áreas
+ligadas a Tecnologia da Informação.
 
-* Ruby version
+<b>Equipe:</b>
 
-* System dependencies
+* Henrique Augusto Shiraishi (estudante)
 
-* Configuration
+* Guilherme Olier Prado (estudante)
 
-* Database creation
+* Ana Paula Müller Giancoli (orientadora)
 
-* Database initialization
+<b>Iniciando a aplicação:</b>
 
-* How to run the test suite
+* Clona ou faça o Download do projeto.
 
-* Services (job queues, cache servers, search engines, etc.)
+* Instale as Gems dependentes do projeto: <tt>Bundle</tt>
 
-* Deployment instructions
+* Altere o arquivo <i>database.yml</i> de acordo com suas credenciais do banco de dados.
 
-* ...
+* Crie o banco de dados e o usuário padrão: <tt>rake db:create db:migrate db:seed</tt>
 
+* Rode a aplicação com localhost ou com o comando: <tt>foreman start</tt>
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* Usuário padrão: <b>user</b> admin@admin <b>password</b> 123456
