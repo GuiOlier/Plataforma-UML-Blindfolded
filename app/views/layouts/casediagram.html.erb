@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BlindFolded Uso</title>
+  <%= stylesheet_link_tag    'application' %>
+  <%= javascript_include_tag 'application' %>
+  <%= stylesheet_link_tag    'casediagram' %>
+  <%= javascript_include_tag 'casediagram' %>
+  <%= csrf_meta_tags %>
+
+  <!-- favicon -->
+  <link rel="icon" href="/assets/Blindfolded_logo.png" type="image/x-icon"/>
+</head>
+<body>
+
+  <div id="page" class="container geral">
+
+    <%= render partial: 'layouts/shared/header' %>
+
+    <div class="row">
+      <%= render partial: 'layouts/shared/menu_case' %>
+
+      <div class="col-md-9">
+        <%= yield %>
+      </div>
+    </div>
+
+  </div>
+
+  <%= render partial: 'layouts/shared/footer' %>
+
+  <script>
+  <% if notice %>
+    $.notify("<%= notice %>", "success");
+  <% end %>
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+'pt-BR':
+  messages:
+    diagrams: Diagramas
+    new_diagram: Novo Diagrama
+    confirm_destroy: Tem certeza que deseja apagar?
+    edit_diagram: Editando Diagrama
+    new_element: Novo Elemento
+    new_transition: Nova Transição
+    generate_diagram: Diagrama Gerado
+    new_component: Novo Componente
+    new_relation: Nova Relação

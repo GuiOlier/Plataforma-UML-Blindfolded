@@ -1,0 +1,125 @@
+  <div class="row">
+    <div class="col-md-4 col-md-offset-1">
+
+<hr>
+
+      <table class="data-table">
+        <thead>
+          <th>Elemento Tipo</th>
+          <th>Elemento Descrição</th>
+        </thead>
+        <tbody>
+            <% @case.components.each do |item| %>
+              <tr onclick="showModal('Component'); captureAttributesComponent('<%= item.id %>', '<%= item.descriptionsComponent %>', '<%= item.case_id %>', '<%= item.mold_id %>'); focusEditComponent(); alterIdComponent('<%= item.id %>');">
+                <td><%= item.mold_id %></td>
+                <td><%= item.descriptionsComponent %></td>
+              </tr>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-4">
+
+<hr>
+
+      <table class="data-table">
+        <thead>
+          <th>Tipo</th>
+          <th>Incial</th>
+          <th>Final</th>
+        </thead>
+        <tbody>
+            <% @case.relations.each do |item| %>
+              <tr onclick="showModal('Relation'); captureAttributesRelation('<%= item.id %>','<%= item.elemStart %>','<%= item.elemEnd %>', '<%= item.case_id %>', '<%= item.connection_id %>'); focusEditRelation(); alterIdRelation('<%= item.id %>');">
+                <td><%= item.connection_id %></td>
+                <td><%= item.elemStart %></td>
+                <td><%= item.elemEnd %></td>
+              </tr>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+<!-- Modal Edit Component -->
+<%= render partial: 'case/cases/modals/modalComponentEdit' %>
+
+<!-- Modal Edit Relation -->
+<%= render partial: 'case/cases/modals/modalRelationEdit' %>
+
+<script>
+  // Variável com ID do Componente e Relação a ser apagado.
+  var idComponent = 0;
+  var idRelation = 0;
+
+  // Função para exibir o modal de edição de Componente e Relação.
+  function showModal(arg) {
+    $('#modalEdit' + arg).modal('show')
+  };
+
+  // Capturar atributos do Componente ao clicar na linha da tabela.
+  function captureAttributesComponent(id, descriptionComponent, case_id, mold_id) {
+    $('input#descriptionComponent').val(descriptionComponent);
+    $('input#case_id').val(case_id);
+    $('input#mold_id').val(mold_id);
+    $("#formComponentEdit").attr("action", "/case/components/" + id);
+  };
+
+  // Capturar atributos da Relação ao clicar na linha da tabela.
+  function captureAttributesRelation(id, elemStart, elemEnd, case_id, connection_id) {
+    $('select#elemStart').val(elemStart);
+    $('select#elemEnd').val(elemEnd);
+    $('input#case_id').val(case_id);
+    $('select#connection_id').val(connection_id);
+    $("#formRelationEdit").attr("action", "/case/relations/" + id);
+  };
+
+  // Função para focar o input#descriptionComponent
+  function focusEditComponent() {
+    setTimeout(function(){
+        $('#descriptionComponent').focus();
+    }, 500);
+  };
+
+  // Função para focar o input#elemStart
+  function focusEditRelation() {
+    setTimeout(function(){
+        $('#connection_id').focus();
+    }, 500);
+  };
+
+  // Função para alterar o valor da variável com a ID do componente
+  // que o usuário clicou na tabela.
+  function alterIdComponent(id){
+    idComponent = id;
+  };
+
+  // Função para alterar o valor da variável com a ID da relação
+  // que o usuário clicou na tabela.
+  function alterIdRelation(id){
+    idRelation = id;
+  };
+
+  // Função para apagar o componente ao clicar no botão 'apagar'
+  function ComponentDestroy(){
+    $("#formComponentDestroy").attr("action", "/case/components/" + idComponent);
+    $('#formComponentDestroy').submit();
+  };
+
+  // Função para apagar a relação ao clicar no botão 'apagar'
+  function RelationDestroy(){
+    $("#formRelationDestroy").attr("action", "/case/relations/" + idRelation);
+    $('#formRelationDestroy').submit();
+  };
+
+</script>
+
+<!-- Formulário para apagar um componente. -->
+<%= form_tag(case_component_path, method: 'delete', class:"form-inline", id:'formComponentDestroy') do %>
+<% end %>
+
+<!-- Formulário para apagar uma relação. -->
+<%= form_tag(case_relation_path, method: 'delete', class:"form-inline", id:'formRelationDestroy') do %>
+<% end %>

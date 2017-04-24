@@ -1,0 +1,32 @@
+<div class="modal fade" id="modalEditElement" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Editando Elemento</h4>
+      </div>
+
+      <%= form_tag(state_element_path, method: 'put', class:"form-inline", id:'formElementEdit') do %>
+      <div class="modal-body text-center">
+        <div class="form-group">
+          <%= label_tag :nameElem %><br>
+          <%= text_field_tag :nameElem,nil,class:"form-control",id:'nameElem' %>
+        </div>
+        <div class="form-group">
+          <%= label_tag :descriptionElem %><br>
+          <%= text_field_tag :descriptionElem,nil,class:"form-control",id:'descriptionElem' %>
+        </div>
+        <div class="form-group hide">
+          <%= text_field_tag :type_id, nil, class:"form-control", readonly: true,id:'type_id' %>
+          <%= text_field_tag :machine_id, nil, class:"form-control", readonly: true,id:'machine_id' %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger pull-left" onclick="ElementDestroy()"><%= t('buttons.destroy') %></button>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><%= t('buttons.close') %></button>
+        <%= submit_tag "#{t('buttons.save')}", class:"btn btn-primary btn-modal-element" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

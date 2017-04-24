@@ -1,0 +1,28 @@
+<h1><%= t('messages.diagrams') %></h1>
+
+<%= link_to "#{t('buttons.new_diagram')}", new_state_machine_path, class:'btn btn-primary btn-xs pull-right' %> <br><br>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th><%= @machines.model.human_attribute_name('nameDiagram') %></th>
+      <th><%= @machines.model.human_attribute_name('created_at') %></th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @machines.each do |machine| %>
+      <tr>
+        <td><%= link_to "#{machine.nameDiagram}", edit_state_machine_path(machine) %></td>
+        <td><%= machine.created_at %></td>
+        <td><%= link_to "#{t('buttons.show')}", state_machine_path(machine) %></td>
+        <td><%= link_to "#{t('buttons.destroy')}", state_machine_path(machine), method: :delete, data: { confirm: "#{t('messages.confirm_destroy')}" } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+

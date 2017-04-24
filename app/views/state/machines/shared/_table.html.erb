@@ -1,0 +1,128 @@
+<div class="row">
+  <div class="col-md-4 col-md-offset-1">
+
+<hr>
+
+    <table class="data-table">
+      <thead>
+        <th>Elemento Tipo</th>
+        <th>Elemento Nome</th>
+        <th>Elemento Descrição</th>
+      </thead>
+      <tbody>
+          <% @machine.elements.each do |item| %>
+            <tr onclick="showModal('Element'); captureAttributesElement('<%= item.id %>', '<%= item.nameElem %>', '<%= item.descriptionElem %>', '<%= item.machine_id %>', '<%= item.type_id %>'); focusEditElement(); alterIdElement('<%= item.id %>');">
+              <td><%= item.type_id %></td>
+              <td><%= item.nameElem %></td>
+              <td><%= item.descriptionElem %></td>
+            </tr>
+          <% end %>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-4">
+
+<hr>
+
+    <table class="data-table">
+      <thead>
+        <th>Transição Incial</th>
+        <th>Transição Final</th>
+        <th>Transição Descrição</th>
+      </thead>
+      <tbody>
+          <% @machine.transitions.each do |item| %>
+            <tr onclick="showModal('Transition'); captureAttributesTransition('<%= item.id %>','<%= item.elemStart %>','<%= item.elemEnd %>','<%= item.descriptionTran %>','<%= item.machine_id %>'); focusEditTransition(); alterIdTransition('<%= item.id %>')">
+              <td><%= item.elemStart %></td>
+              <td><%= item.elemEnd %></td>
+              <td><%= item.descriptionTran %></td>
+            </tr>
+          <% end %>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Modal Edit Element -->
+<%= render partial: 'state/machines/modals/modalElementEdit' %>
+
+<!-- Modal Edit Transition -->
+<%= render partial: 'state/machines/modals/modalTransitionEdit' %>
+
+<script>
+  // Variável com ID do Elemento e Transição a ser apagado.
+  var idElement = 0;
+  var idTransition = 0;
+
+  // Função para exibir o modal de edição do elemento e transição.
+  function showModal(arg) {
+    $('#modalEdit' + arg).modal('show')
+  };
+
+  // Captura atributos do elemento ao clicar na linha da tabela.
+  function captureAttributesElement(id, nameElem, descriptionElem, machine_id, type_id) {
+    $('input#nameElem').val(nameElem);
+    $('input#descriptionElem').val(descriptionElem);
+    $('input#machine_id').val(machine_id);
+    $('input#type_id').val(type_id);
+    $("#formElementEdit").attr("action", "/state/elements/" + id);
+  };
+
+  // Captura atributos da transição ao clicar na linha da tabela.
+  function captureAttributesTransition(id, elemStart, elemEnd, descriptionTran, machine_id) {
+    $('select#elemStart').val(elemStart);
+    $('select#elemEnd').val(elemEnd);
+    $('input#descriptionTran').val(descriptionTran);
+    $('input#machine_id').val(machine_id);
+    $("#formTransitionEdit").attr("action", "/state/transitions/" + id);
+  };
+
+  // Função para focar o input#nameElem
+  function focusEditElement() {
+    setTimeout(function(){
+        $('#nameElem').focus();
+    }, 500);
+  };
+
+  // Função para focar o input#nameElem
+  function focusEditTransition() {
+    setTimeout(function(){
+        $('#elemStart').focus();
+    }, 500);
+  };
+
+  // Função para alterar o valor da variável com a ID do elemento
+  // que o usuário clicou na tabela.
+  function alterIdElement(id){
+    idElement = id;
+  };
+
+  // Função para alterar o valor da variável com a ID da transição
+  // que o usuário clicou na tabela.
+  function alterIdTransition(id){
+    idTransition = id;
+  };
+
+  // Função para apagar o elemento ao clicar no botão 'apagar'
+  function ElementDestroy(){
+    $("#formElementDestroy").attr("action", "/state/elements/" + idElement);
+    $('#formElementDestroy').submit();
+  };
+
+  // Função para apagar o transição ao clicar no botão 'apagar'
+  function TransitionDestroy(){
+    $("#formTransitionDestroy").attr("action", "/state/transitions/" + idTransition);
+    $('#formTransitionDestroy').submit();
+  };
+
+</script>
+
+<!-- Formulário para apagar um elemento. -->
+<%= form_tag(state_element_path, method: 'delete', class:"form-inline", id:'formElementDestroy') do %>
+<% end %>
+
+<!-- Formulário para apagar uma transição. -->
+<%= form_tag(state_transition_path, method: 'delete', class:"form-inline", id:'formTransitionDestroy') do %>
+<% end %>

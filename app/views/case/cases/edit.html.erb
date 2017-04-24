@@ -1,0 +1,74 @@
+<h1><%= t('messages.edit_diagram') %></h1>
+<hr>
+
+  <%= form_for([:case, @case]) do |f| %>
+    <% if @case.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@case.errors.count, "error") %> prohibited this case from being saved:</h2>
+
+        <ul>
+        <% @case.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+  <div class="col-md-8 col-md-offset-1">
+    <div class="row">
+      <div class="field pull-left">
+        <%= f.label :namediagram %><br>
+        <%= f.text_field :namediagram, class:"form-control" %>
+      </div>
+        <div class="pull-right bt-edit">
+          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDiagrama"><%= t('buttons.generate_diagram') %></button>
+        </div>
+    </div><hr>
+  </div>
+
+  <div class="col-md-12">
+    <div class="row">
+      <div id="elements" class="col-md-8 col-md-offset-1 padding-element">
+          <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalComponent" id="btnComponent">
+            <%= t('buttons.new_component') %>
+          </button>
+          <%= f.submit class:'btn btn-primary' %>
+
+          <% if (((@count_actors > 0) && (@count_cases > 0)) || (@count_cases >= 2)) %>
+            <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalRelation" id="btnRelation">
+              <%= t('buttons.new_relation') %>
+            </button>
+          <% else %>
+            <button type="button" class="btn btn-success btn-lg disabled" data-toggle="modal" data-target="">
+              <%= t('buttons.new_relation') %>
+            </button>
+          <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-8 col-md-offset-1">
+    <div class="row">
+      <div class="field hide">
+        <%= f.label :user_id %><br>
+        <%= f.text_field :user_id, :value => current_user.id, readonly: true %>
+      </div>
+    </div><hr>
+  </div>
+<% end %>
+
+<!-- Tabela dos elementos e transições -->
+<%= render partial: 'case/cases/shared/table' %>
+
+<!-- Modal Componente -->
+<%= render partial: 'case/cases/modals/modalComponentCreate' %>
+
+<!-- Modal Relação -->
+<%= render partial: 'case/cases/modals/modalRelationCreate' %>
+
+<!-- Modal Diagrama -->
+<%= render partial: 'state/machines/modals/modalGerenateDiagram' %>
+
+<script>
+  $('#btnComponent').focus();
+</script>

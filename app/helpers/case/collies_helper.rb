@@ -1,0 +1,2 @@
+module Case::ColliesHelper
+end

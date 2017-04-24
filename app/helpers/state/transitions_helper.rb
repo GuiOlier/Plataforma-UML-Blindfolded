@@ -1,0 +1,2 @@
+module State::TransitionsHelper
+end

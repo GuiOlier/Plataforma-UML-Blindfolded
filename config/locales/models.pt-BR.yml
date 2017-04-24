@@ -1,0 +1,94 @@
+'pt-BR':
+  activerecord:
+    models:
+      case:
+        one: Diagrama
+        other: Diagramas
+      component:
+        one: Componente
+        other: Componentes
+      connection:
+        one: Relação
+        other: Relações
+      element:
+        one: Elemento
+        other: Elementos
+      machine:
+        one: Diagrama
+        other: Diagramas
+      mold:
+        one: Tipo
+        other: Tipos
+      relation:
+        one: Associação
+        other: Associações
+      transition:
+        one: Transição
+        other: Transições
+      user:
+        one: Usuário
+        other: Usuários
+      type:
+        one: Tipo
+        other: Tipos
+    attributes:
+      case:
+        id: Código
+        namediagram: Nome Diagrama
+        user_id: ID Usuário
+        created_at: Criado em
+        updated_at: Atualizado em
+      component:
+        id: Código
+        descriptionsComponent: Descrição do Componente
+        case_id: Caso
+        mold_id: Tipo de Componente
+        created_at: Criado em
+        updated_at: Atualizado em
+      connection:
+        id: Código
+        name: Nome da Relação
+        created_at: Criado em
+        updated_at: Atualizado em
+      element:
+        id: Código
+        nameElem: Nome Elemento
+        descriptionElem: Descrição do Elemento
+        machine_id: Diagrama ID
+        type_id: Tipo de Elemento
+        created_at: Criado em
+        updated_at: Atualizado em
+      machine:
+        id: Código
+        nameDiagram: Nome Diagrama
+        elemInitial: Elemento Inicial
+        elemEnd: Elemento Final
+        user_id: Usuário ID
+        created_at: Criado em
+        updated_at: Atualizado em
+      mold:
+        id: Código
+        name: Tipo do Componente
+        created_at: Criado em
+        updated_at: Atualizado em
+      relation:
+        id: Código
+        elemStart: Elemento Inícial
+        elemEnd: Elemento Final
+        case_id: Caso
+        connection_id: Tipo de Relação
+        created_at: Criado em
+        updated_at: Atualizado em
+      transition:
+        id: Código
+        elemStart: Elemento Inícial
+        elemEnd: Elemento Final
+        descriptionTran: Descrição da Transição
+        machine_id: Diagrama ID
+        created_at: Criado em
+        updated_at: Atualizado em
+      type:
+        id: Código
+        name: Tipo de Elemento
+        created_at: Criado em
+        updated_at: Atualizado em

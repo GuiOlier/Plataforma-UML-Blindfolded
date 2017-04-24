@@ -1,0 +1,26 @@
+<h1><%= t('messages.diagrams') %></h1>
+
+<%= link_to "#{t('buttons.new_diagram')}", new_case_case_path, class:'btn btn-primary btn-xs pull-right' %><br><br>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th><%= @cases.model.human_attribute_name('namediagram') %></th>
+      <th><%= @cases.model.human_attribute_name('created_at') %></th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cases.each do |case_item| %>
+      <tr>
+        <td><%= link_to "#{case_item.namediagram}", edit_case_case_path(case_item) %></td>
+        <td><%= case_item.created_at %></td>
+        <td><%= link_to "#{t('buttons.show')}", [:case, case_item] %></td>
+        <td><%= link_to "#{t('buttons.destroy')}", [:case, case_item], method: :delete, data: { confirm: "#{t('messages.confirm_destroy')}" } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

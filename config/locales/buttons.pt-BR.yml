@@ -1,0 +1,19 @@
+'pt-BR':
+  buttons:
+    home: Início
+    state: Máquina de Estado
+    case: Caso de Uso
+    logout: Sair
+    list_diagram: Listar Diagramas
+    new_diagram: Novo Diagrama
+    create_diagram: Criar Diagrama
+    show: Exibir
+    destroy: Apagar
+    close: Fechar
+    save: Salvar
+    destroy: Apagar
+    new_element: Adicionar Elemento
+    new_transition: Adicionar Transição
+    generate_diagram: Gerar Diagrama
+    new_component: Adicionar Componente
+    new_relation: Adicionar Relação

@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-md-6">
+    <h1><%= t('messages.new_diagram') %></h1>
+
+    <%= form_for([:state, @machine]) do |f| %>
+      <% if @machine.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@machine.errors.count, "error") %> prohibited this machine from being saved:</h2>
+
+          <ul>
+          <% @machine.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <%= f.label :nameDiagram %><br>
+        <%= f.text_field :nameDiagram, class:"form-control", placeholder:t('placeholder.name_diagram'), autofocus: true %>
+      </div>
+      <div class="field hide">
+        <%= f.label :user_id %><br>
+        <%= f.text_field :user_id, :value => current_user.id, readonly: true %>
+      </div><br>
+      <div class="actions">
+        <%= f.submit class:'btn btn-primary btn-sm' %>
+      </div>
+    <% end %>
+  </div>
+</div>

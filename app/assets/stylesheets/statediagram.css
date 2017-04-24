@@ -1,0 +1,19 @@
+/*
+ *= require DataTables
+ */
+
+.border-father {
+  /* border: 1px dashed grey; */
+}
+.bt-edit {
+  padding-top: 15px;
+}
+.field-element {
+  margin-top: -20px;
+}
+.btn-gerar {
+  margin-top: 30px;
+}
+.padding-element {
+  padding-left: 55px;
+}

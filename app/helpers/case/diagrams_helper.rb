@@ -1,0 +1,2 @@
+module Case::DiagramsHelper
+end

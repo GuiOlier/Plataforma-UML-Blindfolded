@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-md-offset-4 col-md-4 text-center">
+
+      <div class="form-login">
+      <h4><%= t('.sign_in') %></h4>
+
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= f.email_field :email, autofocus: true, id:"userName", class:"form-control input-sm chat-input", placeholder:"#{:email}"  %>
+      </br>
+      <%= f.password_field :password, autocomplete: "off", id:"userPassword", class:"form-control input-sm chat-input", placeholder:"#{:password}" %>
+      </br>
+
+        <div class="wrapper">
+            <span class="group-btn">
+              <%= f.submit t('.sign_in'), class:"btn btn-primary btn-md" do %>
+                <i class="fa fa-sign-in"></i>
+              <% end %>
+              <%= f.submit 'Registrar', class:"btn btn-primary btn-md" do %>
+                <i class="fa fa-sign-in"></i>
+              <% end %>
+            </span>
+          <% end %>
+        </div>
+
+    </div>
+  </div>
+</div>
+

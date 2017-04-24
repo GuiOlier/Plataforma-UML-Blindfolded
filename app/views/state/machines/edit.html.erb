@@ -1,0 +1,88 @@
+<h1><%= t('messages.edit_diagram') %></h1>
+<hr>
+
+<%= form_for([:state, @machine]) do |f| %>
+  <% if @machine.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@machine.errors.count, "error") %> prohibited this machine from being saved:</h2>
+
+      <ul>
+      <% @machine.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="col-md-8 col-md-offset-1">
+      <div class="row">
+        <div class="field pull-left">
+          <%= f.label :nameDiagram %><br>
+          <%= f.text_field :nameDiagram, class:"form-control " %>
+        </div>
+        <div class="pull-right bt-edit">
+          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDiagrama"><%= t('buttons.generate_diagram') %></button>
+        </div>
+      </div><hr>
+    </div>
+
+    <% if @machine.elements.count > 1 %>
+    <div class="col-md-4 col-md-offset-1">
+      <div class="row"><br>
+        <div class="field field-element">
+          <%= f.label :elemInitial %>:
+          <%= f.collection_select(:elemInitial, @machine_status, :id, :nameElem, {}, {:class=>"form-control"}) %>
+          <%= f.label :elemEnd %>
+          <%= f.collection_select(:elemEnd, @machine_status, :id, :nameElem, {include_blank: true}, {:class=>"form-control"}) %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8 col-md-offset-1">
+      <hr>
+    </div>
+    <% end %>
+    <div class="col-md-12">
+      <div class="row">
+        <div id="elements" class="col-md-8 col-md-offset-1 padding-element">
+          <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalElement" id="btnElemen">
+            <%= t('buttons.new_element') %>
+          </button>
+          <%= f.submit class:'btn btn-primary' %>
+
+        <% if @machine.elements.count > 1 %>
+            <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalTransition" id="btnTransition">
+              <%= t('buttons.new_transition') %>
+            </button>
+        <% else %>
+            <button type="button" class="btn btn-success btn-lg disabled" data-toggle="modal" data-target="">
+              <%= t('buttons.new_transition') %>
+            </button>
+        <% end %>
+        </div>
+      </div><br>
+    </div>
+    <div class="col-md-8 col-md-offset-1">
+      <div class="row">
+        <div class="field hide">
+          <%= f.label :user_id %><br>
+          <%= f.text_field :user_id, :value => current_user.id, readonly: true %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+<!-- Tabela dos elementos e transições -->
+<%= render partial: 'state/machines/shared/table' %>
+
+<!-- Modal Elemento -->
+<%= render partial: 'state/machines/modals/modalElementCreate' %>
+
+<!-- Modal Transição -->
+<%= render partial: 'state/machines/modals/modalTransitionCreate' %>
+
+<!-- Modal Diagrama -->
+<%= render partial: 'state/machines/modals/modalGerenateDiagram' %>
+
+<script>
+  $('#btnElemen').focus();
+</script>
