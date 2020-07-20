@@ -1,41 +1,18 @@
 = Plataforma UML Blindfolded
-== Projeto de Pesquisa Voluntário
+== Projeto de Iniciação Científica Voluntária
 
 <b>Resumo:</b>
-
-Dentro do contexto acadêmico e na vida profissional nas áreas correlatas a tecnologia de informação, a
-Linguagem de Modelagem Unificada (UML) desempenha um papel fundamental no desenvolvimento de um
-software de qualidade. A UML é um conjunto de notações gráficas utilizada para modelar sistemas sendo
-considerada parte central das atividades envolvidas na construção, documentação e implementação de
-softwares, por meio de especificação, visualização, modificação, construção e documentação de artefatos
-de projetos de software orientados a objetos. É composta por treze diagramas subdivididos em estruturais,
-implementação, comportamentais e interação. O presente projeto de pesquisa visa o desenvolvimento do
-módulo de aplicação de auxílio educacional ao cego na construção de diagrama de máquina de estado
-da plataforma UML blindfolded de auxílio educacional ao cego no gerenciamento de diagramas UML. UML
-blindfolded possibilita ao estudante cego gerenciar e manipular seus diagramas no ambiente web por meio
-de tecnologias online, assistivas, acessíveis e de qualidade, além de hospedar os módulos de aplicações
-geradas para cada um dos diagramas da UML a serem desenvolvidos em outros projetos de pesquisas
-futuros, possibilitando a inclusão de pessoas portadoras dessa deficiência no curso superior nas áreas
-ligadas a Tecnologia da Informação.
+A Linguagem de Modelagem Unificada (UML), dentro do universo da tecnologia da informação tem um papel fundamental para o desenvolvimento de sistemas, tanto para a documentação do sistema quanto para auxiliar em diversas etapas do processo de construção do software. A UML é constituída de diagramas, que são elementos que têm por essência a representação visual de seus itens, o que implica em falhas no processo de aprendizado e de tutoria de deficientes visuais em diagramas tal como o de máquina de estado, classes e casos de uso, que são o cerne da nossa pesquisa. Visando auxiliar nos ensinamentos e aprendizados, o presente trabalho propõe uma plataforma de auxílio educacional para deficientes visuais em ambiente web para a construção de diagramas da UML, com área direcionada à análise do professor a fim de fortalecer os métodos usados e permitir a interação e inclusão de deficientes visuais nos cursos de ensino superior ligados à área de tecnologia e também a áreas do mercado de trabalho referentes às mesmas.
 
 <b>Equipe:</b>
-
 * Henrique Augusto Shiraishi (estudante)
-
 * Guilherme Olier Prado (estudante)
-
 * Ana Paula Müller Giancoli (orientadora)
 
 <b>Iniciando a aplicação:</b>
-
 * Clona ou faça o Download do projeto.
-
 * Instale as Gems dependentes do projeto: <tt>Bundle</tt>
-
 * Altere o arquivo <i>database.yml</i> de acordo com suas credenciais do banco de dados.
-
 * Crie o banco de dados e o usuário padrão: <tt>rake db:create db:migrate db:seed</tt>
-
 * Rode a aplicação com localhost ou com o comando: <tt>foreman start</tt>
-
 * Usuário padrão: <b>user</b> admin@admin <b>password</b> 123456
